@@ -14,7 +14,7 @@ class AdverticeCategories extends Migration
     public function up()
     {
         Schema::create('categories',function(Blueprint $table){
-            $table->increment('id');
+            $table->increments('id');
             $table->string('name',200)->unnique();
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ class PaymentFees extends Migration
     public function up()
     {
         Schema::create('payment',function(Blueprint $table){
-            $table->increment('id');
+            $table->increments('id');
             $table->integer('adverticement-id');
             $table->string('fees');
             $table->timestamps();

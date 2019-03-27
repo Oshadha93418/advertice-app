@@ -17,7 +17,12 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $user =Auth::user();
+        echo "<script type='text/javascript'>alert(".$user.")</script>";
         if (Auth::guard($guard)->check()) {
+            if (Auth::user()->user_role == 'admin') {
+                return redirect('/register');
+            }
             return redirect('/home');
         }
 

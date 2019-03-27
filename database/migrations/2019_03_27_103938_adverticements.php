@@ -14,7 +14,7 @@ class Adverticements extends Migration
     public function up()
     {
         Schema::create('adverticements',function(Blueprint $table){
-            $table->increment('id');
+            $table->increments('id');
             $table->integer('user_id');
             $table->string('discription');
             $table->integer('category_id');

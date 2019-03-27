@@ -68,4 +68,8 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    function step1(array $data){
+        print_r($data);
+    }
 }

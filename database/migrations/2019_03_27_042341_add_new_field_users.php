@@ -18,7 +18,12 @@ class AddNewFieldUsers extends Migration
             $table->string('last_name');
             $table->string('address');
             $table->string('phone')->nullable();
+            $table->string('token');
             $table->string('user_role');
+            $table->string('status');
+            $table->string('file_name');            
+            $table->string('file_type');
+            $table->string('file_path');
             $table->datetime('deleted_at')->nullable();
         });
     }

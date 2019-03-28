@@ -1,9 +1,8 @@
-@extends('layouts.user.app')
-
+@extends('layouts.admin.app')
 @section('content')
-<div class="container">
+<div class="container ">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
@@ -14,6 +13,7 @@
                         </div>
                     @endif
 
+                    You are logged in as admin!
                 </div>
             </div>
         </div>

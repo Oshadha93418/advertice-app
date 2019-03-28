@@ -12,6 +12,7 @@ class User extends Authenticatable
     const ACTIVE = 'active';
     const INACTIVE = 'pending';
     const USERROLE = 'user';
+
     /**
      * The attributes that are mass assignable.
      *

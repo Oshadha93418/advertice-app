@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,7 +18,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
 
     /**
@@ -25,7 +25,32 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public function redirectTo(){
+        
+        $status = Auth::user()->status;
+        switch($status){
+            case 'pending':
+                    return '/login';
+                break;
+        }
+       
+        // User role
+        $role = Auth::user()->user_role; 
+        
+        // Check user role
+        switch ($role) {
+            case 'admin':
+                    return '/admin/home';
+                break;
+            case 'user':
+                    return '/home';
+                break; 
+            default:
+                    return '/login'; 
+                break;
+        }
+        
+    }
 
     /**
      * Create a new controller instance.
@@ -36,30 +61,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     
-    /**
-     * Determine if the request field is email or username.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function field(Request $request)
-    {
-        $email = $this->username();
-
-        return filter_var($request->get($email), FILTER_VALIDATE_EMAIL) ? $email : 'username';
-    }
-
-    /**
-     * Validate the user login request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
-     */
 }

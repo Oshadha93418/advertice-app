@@ -47,6 +47,7 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
+
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -70,8 +71,11 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="wrapper">
+            <div class="content-wrapper">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

@@ -53,7 +53,8 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:150|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'address' => 'required|string|max:255',
+            'input_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'address' => 'required|string|max:255'
         ]);
     }
 
@@ -75,6 +76,9 @@ class RegisterController extends Controller
             'token' => str_random(40) . time(),
             'user_role' => 'user',
             'password' => bcrypt($data['password']),
+            'file_name'=>$data['image'],
+            'file_type'=>$data['type'],
+            'file_path'=>$data['path']
         ]);
 
         $user->notify(new UserActivate($user));

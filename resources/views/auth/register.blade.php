@@ -77,18 +77,18 @@
                                 @endif
                             </div>
                         </div>
-                       <!--  <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
                             <label for="file" class="col-md-4 control-label">Upload Photo</label>
 
                             <div class="col-md-6">
-                                <input  class="btn btn-success" name="fileToUpload" type="file" name="image" size="25" id="fileToUpload" required>
+                                <input  class="btn btn-success" name="input_img" type="file" name="image" size="25" id="input_img" required>
                                 @if ($errors->has('file'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('file') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                        </div> -->
+                        </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

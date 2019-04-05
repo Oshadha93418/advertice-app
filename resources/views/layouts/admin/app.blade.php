@@ -17,7 +17,7 @@
     <div id="app">
         <div class="wrapper">
         @include('layouts.admin.header')
-        @include('layouts.admin.sidebar', ['user' => Auth::user()])
+        <sidebar></sidebar>
             <div class="content-wrapper">
                 @yield('content')
             </div>

@@ -14,8 +14,11 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import VueSidebarMenu from 'vue-sidebar-menu'
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.use(VueSidebarMenu)
+
+Vue.component('sidebar', require('./components/Sidebar.vue'));
 
 const app = new Vue({
     el: '#app'

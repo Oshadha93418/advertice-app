@@ -24,7 +24,7 @@ class SubscriptionPlansController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**

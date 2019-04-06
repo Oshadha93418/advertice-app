@@ -13,15 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if (session('select_subscription_plan'))
-                        <div class="alert alert-success">
-                            {{ session('select_subscription_plan') }}
-                        </div>
-                    @endif
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+                    

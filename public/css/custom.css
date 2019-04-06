@@ -1,0 +1,86 @@
+/* your styles go here */
+
+/* custom package classes */
+
+.packages .package {
+    background: #fff;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    text-align: center;
+    border: solid 1px #38a7bb;
+    overflow: hidden;
+  }
+  .packages .package .package-header {
+    height: 57px;
+    color: #fff;
+    line-height: 57px;
+    background: #38a7bb;
+  }
+  .packages .package .package-header h5 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 57px;
+    margin: 0;
+    letter-spacing: 0.08em;
+  }
+  .packages .package .package-header.light-gray {
+    background: #eeeeee;
+  }
+  .packages .package .package-header.light-gray h5 {
+    color: #555555;
+  }
+  .packages .package .price {
+    line-height: 120px;
+    height: 100px;
+    color: #fff;
+    font-weight: 400;
+  }
+  .packages .package .price h4 {
+    display: inline;
+    font-size: 50px;
+    line-height: normal;
+    margin-bottom: 0;
+  }
+  .packages .package .price .period {
+    line-height: normal;
+    color: #999999;
+  }
+  .packages .package ul {
+    padding: 0;
+  }
+  .packages .package ul li {
+    list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%;
+    margin: auto;
+    border-bottom: 1px dotted #ccc;
+  }
+  .packages .package ul li:last-child {
+    border-bottom: 0;
+  }
+  .packages .package ul li i {
+    font-size: 13px;
+    margin-right: 5px;
+  }
+  .packages .best-value .package {
+    margin-top: 0;
+    padding-bottom: 40px;
+  }
+  .packages .best-value .package .package-header {
+    height: 72px;
+    padding-top: 17px;
+    height: 82px !important;
+  }
+  .packages .best-value .package .package-header h5 {
+    font-weight: bold;
+    line-height: 29px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .packages .best-value .package .package-header .meta-text {
+    font-size: 13px;
+    line-height: 15px;
+  }

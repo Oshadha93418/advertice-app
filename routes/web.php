@@ -23,3 +23,8 @@ Route::get('activate/{token}', 'Auth\RegisterController@activate')
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/home', 'AdminController@index')->name('home');
+
+Route::resource('advertice-categories', 'Api\AdverticeCategoriesController');
+Route::resource('adverticement', 'Api\AdverticementsController');
+Route::resource('payments', 'Api\PaymentsController');
+Route::resource('subscription-plans', 'Api\SubscriptionPlansController');

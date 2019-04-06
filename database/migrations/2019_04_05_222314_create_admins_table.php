@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Adverticements extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class Adverticements extends Migration
      */
     public function up()
     {
-        Schema::create('adverticements',function(Blueprint $table){
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('discription');
-            $table->integer('category_id');
-            $table->string('status');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class Adverticements extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adverticements');
+        Schema::dropIfExists('admins');
     }
 }

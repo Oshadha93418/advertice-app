@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdverticeCategories extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class AdverticeCategories extends Migration
      */
     public function up()
     {
-        Schema::create('categories',function(Blueprint $table){
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',200)->unnique();
+            $table->string('fees');
             $table->timestamps();
+            $table->integer('user_id')->unsigned();
+            $table->integer('addv_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('addv_id')->references('id')->on('adverticements');
         });
     }
 
@@ -27,6 +31,6 @@ class AdverticeCategories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('payments');
     }
 }

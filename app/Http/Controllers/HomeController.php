@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
+use App\SubscriptionPlans;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = Auth::user()->id;
+        $sub_plan= SubscriptionPlans::where(['user_id'=>$user_id])->get();
+        if(!$sub_plan){
+            return view('home')->with(['select_subscription_plan'=>$sub_plan]);
+        }
+        return view('home')->with(['select_subscription_plan'=>$sub_plan]);
     }
 }

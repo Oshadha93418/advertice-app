@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    
 </head>
 <body>
     <div id="app">
@@ -19,6 +21,7 @@
         @include('layouts.admin.header')
         <sidebar></sidebar>
             <div class="content-wrapper">
+                
                 @yield('content')
             </div>
         </div>

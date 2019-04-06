@@ -21,5 +21,8 @@ Vue.use(VueSidebarMenu)
 Vue.component('sidebar', require('./components/Sidebar.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+        'sidebar': require('./components/Sidebar.vue'),
+    }
 });

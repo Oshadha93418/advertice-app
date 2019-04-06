@@ -17,14 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('activate/{token}', 'Auth\RegisterController@activate')
+Route::get('/activate/{token}', 'Auth\RegisterController@activate')
     ->name('activate');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/home', 'AdminController@index')->name('home');
 
-Route::resource('advertice-categories', 'Api\AdverticeCategoriesController');
-Route::resource('adverticement', 'Api\AdverticementsController');
-Route::resource('payments', 'Api\PaymentsController');
-Route::resource('subscription-plans', 'Api\SubscriptionPlansController');
+//add user subscription into user subscription
+Route::get('/user_subscriptions/subscribe/{id}', 'UserSubcriptionController@subscribe');
+
+Route::resource('/advertice-categories', 'Api\AdverticeCategoriesController');
+Route::resource('/adverticement', 'Api\AdverticementsController');
+Route::resource('/payments', 'Api\PaymentsController');
+Route::resource('/subscription-plans', 'Api\SubscriptionPlansController');
+Route::resource('/user-subscriptions', 'UserSubcriptionController');

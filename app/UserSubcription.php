@@ -5,9 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Adverticements extends Model
+class UserSubcription extends Model
 {
-    
     use Notifiable;
     
     /**
@@ -16,6 +15,6 @@ class Adverticements extends Model
      * @var array
      */
     protected $fillable = [
-        'discription','status'
+        'user_id','sub_id'
     ];
 }

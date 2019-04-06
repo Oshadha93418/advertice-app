@@ -43,7 +43,7 @@
                     @else
                     <div class="col-md-3">
                         <div class="package ">
-                            <div class="package-header light-gray">
+                            <div class="package-header">
                                 <h5>{{ $pro->title }}</h5>
                             </div>
                             <div class="price">

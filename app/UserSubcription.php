@@ -17,4 +17,13 @@ class UserSubcription extends Model
     protected $fillable = [
         'user_id','sub_id'
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
+    public function SubscriptionPlans()
+    {
+        return $this->hasOne('App\SubscriptionPlans', 'id', 'sub_id');
+    }
 }

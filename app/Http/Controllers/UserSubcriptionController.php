@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\UserSubcription;
+use App\SubscriptionPlans;
+use App\Payments;
 
 class UserSubcriptionController extends Controller
 {
@@ -32,13 +34,22 @@ class UserSubcriptionController extends Controller
      */
     public function subscribe($sub_id)
     {
-        var_dump($sub_id);
+
         $subscription = new UserSubcription([
             'user_id' => Auth::user()->id,
             'sub_id' => $sub_id,
         ]);
 
         $subscription->save();
+
+        $plan = SubscriptionPlans::where(['id' => $sub_id])->get();
+
+        $payment = new Payments([
+            'fees' => $plan->price,
+            'user_id' => Auth::user()->id,
+
+        ]);
+        $payment-save();
         return redirect('/home')->with('success', 'Subscription has been added');
     }
 

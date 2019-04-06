@@ -32,8 +32,9 @@ class HomeController extends Controller
         $sub_plan = UserSubcription::where(['user_id' => $user_id])->get();
         if (sizeof($sub_plan) == 0) {
             $subs = SubscriptionPlans::all();
-            return view('user/subscription_plan', compact('subs'))->with(['message'=>'Please select a subscription plan']);
+            return view('user/subscription_plan', compact('subs'))->with(['message' => 'Please select a subscription plan']);
         }
+        
         return view('home')->with(array('select_subscription_plan' => 'hide'));
     }
 }

@@ -82,7 +82,7 @@ class AdminController extends Controller
      */
     public function adverticeList()
     {
-        $adverticements = Adverticements::with('user', 'categories', 'usersubscriptions')->get();
+        $adverticements = Adverticements::with('user', 'categories', 'usersub')->get();
         return view('admin/adverticeList', compact('adverticements'));
     }
 }

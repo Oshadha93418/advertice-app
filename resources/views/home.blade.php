@@ -38,7 +38,7 @@
                     @foreach($advertices as $key)
                     @if($key->cat_id == $val->id)
                     <div class="col-md-4">
-                        <div class="panel">
+                        <div class="panel  panel-default">
                             <div class="panel-body">
                                 <div class="row">
                                     <label>Title</label>

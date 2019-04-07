@@ -22,10 +22,10 @@ class UserSubcription extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
     public function SubscriptionPlans()
     {
-        return $this->belongsTo('App\SubscriptionPlans', 'id', 'sub_id');
+        return $this->hasOne('App\SubscriptionPlans', 'id', 'sub_id');
     }
 }

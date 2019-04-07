@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\UserSubcription;
 use App\SubscriptionPlans;
 use App\Payments;
+use App\AdverticeCategories;
+use App\Adverticements;
 
 class UserSubcriptionController extends Controller
 {
@@ -42,14 +44,7 @@ class UserSubcriptionController extends Controller
 
         $subscription->save();
 
-        $plan = SubscriptionPlans::where(['id' => $sub_id])->get();
-
-        $payment = new Payments([
-            'fees' => $plan->price,
-            'user_id' => Auth::user()->id,
-
-        ]);
-        $payment-save();
+        
         $categories = AdverticeCategories::all();
         $advertices = Adverticements::with('categories', 'user')
             ->where(['user_id' => Auth::user()->id])

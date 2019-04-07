@@ -66,7 +66,7 @@
                                 <td>{{ $value->status }}</td>
                                 <td>{{ $value->user->name }}</td>
                                 <td>{{ $value->created_at}}</td>
-                                <td><button class="btn btn-danger round" onclick="{{ route('adverticement.destroy'),['id'=>$value->id]}}">Delete</button> </td>
+                                <td><a class="btn btn-danger round" href="{{ route('adverticement.destroy',$value->id)}}">Delete</a> </td>
                             </tr>
                             @endforeach
                         </tbody>

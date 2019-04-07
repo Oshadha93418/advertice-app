@@ -31,6 +31,10 @@ class Adverticements extends Model
     }
     public function usersubscriptions()
     {
+        return $this->belongsTo('App\UserSubcription', 'id', 'user_sub_id');
+    }
+    public function usersub()
+    {
         return $this->hasOne('App\UserSubcription', 'id', 'user_sub_id');
     }
 }

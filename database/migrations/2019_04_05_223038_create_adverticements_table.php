@@ -21,6 +21,7 @@ class CreateAdverticementsTable extends Migration
             $table->integer('cat_id')->unsigned();
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('cat_id')->references('id')->on('advertice_categories');
             

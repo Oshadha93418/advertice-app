@@ -10,6 +10,7 @@ class SubscriptionPlans extends Model
     
     use Notifiable;
     
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *

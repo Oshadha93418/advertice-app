@@ -20,6 +20,7 @@ class CreateSubscriptionPlansTable extends Migration
             $table->string('time_duration');
             $table->string('price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

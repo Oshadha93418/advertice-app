@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->string('fees');
             $table->timestamps();
+            $table->softDeletes();
             $table->integer('user_id')->unsigned();
             $table->integer('addv_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

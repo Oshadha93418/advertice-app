@@ -12,7 +12,8 @@ class User extends Authenticatable
     const ACTIVE = 'active';
     const INACTIVE = 'pending';
     const USERROLE = 'user';
-
+    
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *

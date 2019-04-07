@@ -24,7 +24,7 @@ class AddNewFieldUsers extends Migration
             $table->string('file_name')->nullable();            
             $table->string('file_type')->nullable();
             $table->string('file_path')->nullable();
-            $table->datetime('deleted_at')->nullable();
+            $table->softDeletes();
         });
     }
 

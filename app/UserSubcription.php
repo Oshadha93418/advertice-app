@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 class UserSubcription extends Model
 {
     use Notifiable;
+
+    protected $dates = ['deleted_at'];
     
     /**
      * The attributes that are mass assignable.

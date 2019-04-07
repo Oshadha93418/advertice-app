@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\UserSubcription;
+
 use App\Notifications\UserActivate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -70,19 +72,23 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'full_name' => $data['name'].' '.$data['last_name'],
+            'full_name' => $data['name'] . ' ' . $data['last_name'],
             'address' => $data['address'],
             'phone' => $data['phone'],
             'token' => str_random(40) . time(),
             'user_role' => 'user',
             'password' => bcrypt($data['password']),
-            'file_name'=>$data['image'],
-            'file_type'=>$data['type'],
-            'file_path'=>$data['path']
+            'file_name' => $data['image'],
+            'file_type' => $data['type'],
+            'file_path' => $data['path']
         ]);
 
         $user->notify(new UserActivate($user));
 
+        $userSub = UserSubcription::create([
+            'user_id' => Auth::user()->id,
+            'sub_id' => 1,
+        ]);
         return $user;
     }
     /**
@@ -101,20 +107,5 @@ class RegisterController extends Controller
 
         return redirect()->route('login')
             ->with(['success' => 'Congratulations! your account is now activated.']);
-    }
-
-    public function fileUpload(Request $request) {
-
-    
-        if ($request->hasFile('input_img')) {
-            $image = $request->file('input_img');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('images');
-            $image->move($destinationPath, $name);
-
-            $response = array('image'=>$name,'path'=>$destinationPath,'type'=>$image->getClientOriginalExtension());
-    
-            return $response;
-        }
     }
 }

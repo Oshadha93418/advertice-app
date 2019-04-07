@@ -33,7 +33,7 @@ Route::get('/admin/paymentList', 'AdminController@paymentList')->name('paymentLi
 Route::get('/admin/usersList', 'AdminController@usersList')->name('usersList');
 
 //add user subscription into user subscription
-Route::get('/user_subscriptions/subscribe/{id}', 'UserSubcriptionController@subscribe')->name('subscribe');
+Route::get('/user_subscriptions/subscribe/{sub_id}', 'UserSubcriptionController@subscribe')->name('user.subscribe');
 
 Route::resource('/advertice-categories', 'Api\AdverticeCategoriesController');
 Route::resource('/adverticement', 'Api\AdverticementsController');

@@ -34,8 +34,8 @@ class AdverticementsController extends Controller
     {
         $categories = AdverticeCategories::all();
         $user = Auth::user();
-        $userSub = UserSubcription::where(['user_id' => $user->id])->get()->find(1)->subscription;
-        return view('user/products/create', compact(['categories', 'user', 'userSub']));
+        $userSub = UserSubcription::with('SubscriptionPlans')->where(['user_id' => $user->id])->get();
+        return view('user/products/create', compact('categories', 'user', 'userSub'));
     }
 
     /**

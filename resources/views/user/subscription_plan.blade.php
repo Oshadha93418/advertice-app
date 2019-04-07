@@ -14,7 +14,7 @@
                 <div class="row packages">
                     @foreach($subs as $pro)
                     @if($pro->title == 'Standard')
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="best-value">
                             <div class="package ">
                                 <div class="package-header">
@@ -34,14 +34,14 @@
                                     <li><i class="fa fa-check"></i>{{ $pro->discription }}</li>
                                     <li><i class="fa fa-times"></i></li>
                                 </ul>
-                                <a href="{{ route('subscribe',['sub_id'=>$pro->id]) }}" class="btn btn-template-main">
+                                <a href="{{ route('user.subscribe',['sub_id'=>$pro->id]) }}" class="btn btn-template-main">
 
                                     Select </a>
                             </div>
                         </div>
                     </div>
                     @elseif($pro->title != 'Free')
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="package ">
                             <div class="package-header">
                                 <h5>{{ $pro->title }}</h5>
@@ -57,12 +57,11 @@
                                 <li><i class="fa fa-check"></i>{{ $pro->discription }}</li>
                                 <li><i class="fa fa-times"></i></li>
                             </ul>
-                            <a href="{{ route('subscribe'),['sub_id'=>$pro->id]  }}" class="btn btn-template-main">
+                            <a href="{{ route('user.subscribe',['sub_id'=>$pro->id])  }}" class="btn btn-template-main">
 
                                 Select </a>
                         </div>
                     </div>
-
                     @endif
                     @endforeach
                     <!-- <div class="col-md-4">

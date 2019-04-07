@@ -25,18 +25,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
+        /* $schedule->call(function () {
             $adverticements = App\Adverticements::with('usersubscriptions', 'user')->all();
             $current_timestamp = strtotime(Carbon::now()->timestamp);
             foreach ($adverticements as $value) {
                 $created_timestamp = strtotime($value->created_at);
                 $difference = $current_timestamp - $created_timestamp
-                if ( $difference >= 2){
+                if( $difference >= 2){
                     $finish_free = App\UserSubscription::findOrFail($value->id)- >update(["status"=>'disabled']);
                     $finish_free->save();
                 }
             }
-        })->everyMinute();
+        })->everyMinute(); */
     }
 
     /**

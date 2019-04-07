@@ -50,7 +50,12 @@ class UserSubcriptionController extends Controller
 
         ]);
         $payment-save();
-        return redirect('/home')->with('success', 'Subscription has been added');
+        $categories = AdverticeCategories::all();
+        $advertices = Adverticements::with('categories', 'user')
+            ->where(['user_id' => Auth::user()->id])
+            ->get();
+
+        return redirect('/home', compact('categories', 'advertices'))->with('success', 'Subscription has been added');
     }
 
     /**

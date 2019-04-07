@@ -19,7 +19,6 @@
     <div id="app">
         <div class="wrapper">
         @include('layouts.admin.header')
-        <sidebar></sidebar>
             <div class="content-wrapper">
                 
                 @yield('content')

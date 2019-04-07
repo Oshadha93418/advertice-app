@@ -1,77 +1,56 @@
-@extends('layouts.admin.app')
+@extends('layouts.user.app')
 
 @section('content')
-    <!-- Main content -->
-    <section class="content">
-        @include('layouts.errors-and-messages')
-        <div class="box">
-            <form action="{{ route('admin.products.store') }}" method="post" class="form" enctype="multipart/form-data">
-                <div class="box-body">
-                    {{ csrf_field() }}
-                    <div class="col-md-8">
-                        <h2>Product</h2>
-                        <div class="form-group">
-                            <label for="sku">SKU <span class="text-danger">*</span></label>
-                            <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{{ old('sku') }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name <span class="text-danger">*</span></label>
-                            <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{{ old('name') }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description </label>
-                            <textarea class="form-control" name="description" id="description" rows="5" placeholder="Description">{{ old('description') }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="cover">Cover </label>
-                            <input type="file" name="cover" id="cover" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Images</label>
-                            <input type="file" name="image[]" id="image" class="form-control" multiple>
-                            <small class="text-warning">You can use ctr (cmd) to select multiple images</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="quantity">Quantity <span class="text-danger">*</span></label>
-                            <input type="text" name="quantity" id="quantity" placeholder="Quantity" class="form-control" value="{{ old('quantity') }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <span class="input-group-addon">PHP</span>
-                                <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{{ old('price') }}">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default col-md-8 col-md-offset-2">
+                <form action="{{ route('adverticement.store') }}" method="post" class="form" enctype="multipart/form-data">
+                    <div class="box-body">
+                        {{ csrf_field() }}
+                        <div class="col-md-12">
+                            <h2>Product</h2>
+
+                            <div class="form-group">
+                                <label for="name">Category <span class="text-danger">*</span></label>
+                                <select name="category_id" id="category_id" class="form-control select2">
+                                    <option value="">-- Select Category --</option>
+                                    @foreach($categories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Title <span class="text-danger">*</span></label>
+                                <input type="text" name="title" id="title" placeholder="Title" class="form-control" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name <span class="text-danger">*</span></label>
+                                <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{{ $user->name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="text-danger">*</span></label>
+                                <input type="email" name="email" id="email" placeholder="email" class="form-control" value="{{ $user->email }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="phone" class="form-control" value="{{ $user->phone }}" pattern="(999) 999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description </label>
+                                <textarea class="form-control" name="description" id="description" rows="5" placeholder="Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group">
+                                    <a href="{{ route('home') }}" class="btn btn-default">Back</a>
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
                             </div>
                         </div>
-                        @if(!$brands->isEmpty())
-                        <div class="form-group">
-                            <label for="brand_id">Brand </label>
-                            <select name="brand_id" id="brand_id" class="form-control select2">
-                                <option value=""></option>
-                                @foreach($brands as $brand)
-                                    <option @if(old('brand_id') == $brand->id) selected="selected" @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @endif
-                        @include('admin.shared.status-select', ['status' => 0])
-                        @include('admin.shared.attribute-select', [compact('default_weight')])
                     </div>
-                    <div class="col-md-4">
-                        <h2>Categories</h2>
-                        @include('admin.shared.categories', ['categories' => $categories, 'selectedIds' => []])
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="btn-group">
-                        <a href="{{ route('admin.products.index') }}" class="btn btn-default">Back</a>
-                        <button type="submit" class="btn btn-primary">Create</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-        <!-- /.box -->
-
-    </section>
-    <!-- /.content -->
+    </div>
+</section>
 @endsection

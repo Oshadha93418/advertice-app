@@ -16,6 +16,19 @@ class Adverticements extends Model
      * @var array
      */
     protected $fillable = [
-        'discription','status'
+        'title','discription','status','user_id','cat_id','user_sub_id'
     ];
+    
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+    public function categories()
+    {
+        return $this->hasOne('App\AdverticeCategories', 'id', 'cat_id');
+    }
+    public function usersubscriptions()
+    {
+        return $this->hasOne('App\UserSubcription', 'id', 'user_sub_id');
+    }
 }

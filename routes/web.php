@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = App\AdverticeCategories::all();
+    $advertices = App\Adverticements::with('categories', 'user')->get();
+    return view('welcome', compact('categories', 'advertices'));
 });
 
 Auth::routes();
@@ -24,8 +26,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/home', 'AdminController@index')->name('home');
 
+Route::get('/admin/adverticsList', 'AdminController@adverticsList')->name('adverticsList');
+Route::get('/admin/categoryList', 'AdminController@categoryList')->name('categoryList');
+Route::get('/admin/subscriptionList', 'AdminController@subscriptionList')->name('subscriptionList');
+Route::get('/admin/paymentList', 'AdminController@paymentList')->name('paymentList');
+Route::get('/admin/usersList', 'AdminController@usersList')->name('usersList');
+
 //add user subscription into user subscription
-Route::get('/user_subscriptions/subscribe/{id}', 'UserSubcriptionController@subscribe');
+Route::get('/user_subscriptions/subscribe/{id}', 'UserSubcriptionController@subscribe')->name('subscribe');
 
 Route::resource('/advertice-categories', 'Api\AdverticeCategoriesController');
 Route::resource('/adverticement', 'Api\AdverticementsController');

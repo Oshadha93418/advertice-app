@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\UserSubcription;
 use App\SubscriptionPlans;
+use App\AdverticeCategories;
+use App\Adverticements;
 
 class HomeController extends Controller
 {
@@ -34,7 +36,12 @@ class HomeController extends Controller
             $subs = SubscriptionPlans::all();
             return view('user/subscription_plan', compact('subs'))->with(['message' => 'Please select a subscription plan']);
         }
-        
-        return view('home')->with(array('select_subscription_plan' => 'hide'));
+
+        $categories = AdverticeCategories::all();
+        $advertices = Adverticements::with('categories','user')
+            ->where(['user_id' => $user_id])
+            ->get();
+
+        return view('home', compact('categories', 'advertices'))->with(array('select_subscription_plan' => 'hide'));
     }
 }

@@ -34,7 +34,7 @@
                                     <li><i class="fa fa-check"></i>{{ $pro->discription }}</li>
                                     <li><i class="fa fa-times"></i></li>
                                 </ul>
-                                <a href="{{ url('user_subscriptions/subscribe',['sub_id'=>$pro->id]) }}" class="btn btn-template-main">
+                                <a href="{{ route('subscribe',['sub_id'=>$pro->id]) }}" class="btn btn-template-main">
 
                                     Select </a>
                             </div>
@@ -57,7 +57,7 @@
                                 <li><i class="fa fa-check"></i>{{ $pro->discription }}</li>
                                 <li><i class="fa fa-times"></i></li>
                             </ul>
-                            <a href="{{ url('user_subscriptions/subscribe'),['sub_id'=>$pro->id]  }}" class="btn btn-template-main">
+                            <a href="{{ route('subscribe'),['sub_id'=>$pro->id]  }}" class="btn btn-template-main">
 
                                 Select </a>
                         </div>
@@ -117,9 +117,9 @@
 
             </div>
         </div>
-        <div class="row">
-            <a class="offset-col-md-12" href="#">Skip Now</a>
-        </div>
+        <!-- <div class="row">
+            <a class="offset-col-md-12" href="{{ url('home')}}">Skip Now</a>
+        </div> -->
     </div>
 </section>
 @endsection

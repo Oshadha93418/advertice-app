@@ -11,88 +11,67 @@
 
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked category-menu">
+                        @foreach($categories as $val)
                         <li>
-                            <a href="shop-category.html">Men <span class="badge pull-right">42</span></a>
+                            <a href="#">{{ $val->name }} <span class="badge pull-right"></span></a>
                             <ul>
-                                <li><a href="shop-category.html">T-shirts</a>
+                                @foreach($advertices as $key)
+                                @if($key->cat_id == $val->id)
+                                <li><a href="#">{{ $key->title}}</a>
                                 </li>
-                                <li><a href="shop-category.html">Shirts</a>
-                                </li>
-                                <li><a href="shop-category.html">Pants</a>
-                                </li>
-                                <li><a href="shop-category.html">Accessories</a>
-                                </li>
+                                @endif
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="active">
-                            <a href="shop-category.html">Ladies <span class="badge pull-right">123</span></a>
-                            <ul>
-                                <li><a href="shop-category.html">T-shirts</a>
-                                </li>
-                                <li><a href="shop-category.html">Skirts</a>
-                                </li>
-                                <li><a href="shop-category.html">Pants</a>
-                                </li>
-                                <li><a href="shop-category.html">Accessories</a>
-                                </li>
-                            </ul>
-                        </li>
-
+                        @endforeach
                     </ul>
 
                 </div>
             </div>
-
-            <div class="panel panel-default sidebar-menu">
-
-                <div class="panel-heading">
-                    <h3 class="panel-title">Brands</h3>
-                    <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
-                </div>
-
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">Armani (10)
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">Versace (12)
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">Carlo Bruni (15)
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">Jack Honey (14)
-                                </label>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
-
-                    </form>
-                </div>
-            </div>
         </div>
         <div class="col-sm-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+            @foreach($categories as $val)
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>{{ $val->name }}</h4>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
+                    @foreach($advertices as $key)
+                    @if($key->cat_id == $val->id)
+                    <div class="col-md-4">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <label>Title</label>
+                                    {{ $key->title}}
+                                </div>
+                                <div class="row">
+                                    <label>Category</label>
+                                    {{ $key->categories->name}}
+                                </div>
+                                <div class="row">
+                                    <label>Discription</label>
+                                    {{ $key->discription}}
+                                </div>
+                                <div class="row">
+                                    <label>Name</label>
+                                    {{ $key->user->name}}
+                                </div>
+                                <div class="row">
+                                    <label>Email</label>
+                                    {{ $key->user->email}}
+                                </div>
+                                <div class="row">
+                                    <label>Phone Number</label>
+                                    {{ $key->user->phone}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @endif
+                    @endforeach
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>

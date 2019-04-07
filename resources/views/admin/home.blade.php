@@ -27,7 +27,7 @@
                         <li>
                             <a href="">View</a>
                             <ul>
-                                <li><a href="{{route('adverticsList')}}">Adverticements</a>
+                                <li><a href="{{route('adverticeList')}}">Adverticements</a>
                                 </li>
                                 <li><a href="{{route('categoryList')}}">Advertice Categories</a>
                                 </li>
@@ -52,25 +52,23 @@
                         <div class="panel-heading">Total Adverticements</div>
 
                         <div class="panel-body">
-
+                            {{ $totalAdds }}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel">
                         <div class="panel-heading">Total Users</div>
-
                         <div class="panel-body">
-
+                            {{ $totalUsers }}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel">
                         <div class="panel-heading">Total payments</div>
-
                         <div class="panel-body">
-
+                            {{ $totalPayments }}
                         </div>
                     </div>
                 </div>

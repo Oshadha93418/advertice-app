@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Adverticements;
+use App\AdverticeCategories;
+use App\Payments;
+use App\User;
+use App\SubscriptionPlans;
+
+
 
 class AdminController extends Controller
 {
@@ -19,10 +25,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        
-        return view('admin/home');
+        $totalAdds = Adverticements::all()->count();
+        $totalUsers = User::all()->count();
+        $totalPayments = Payments::all()->count();
+        return view('admin/home', compact('totalAdds', 'totalUsers', 'totalPayments'));
     }
-    
+
     /**
      * Show the application dashboard.
      *
@@ -30,9 +38,10 @@ class AdminController extends Controller
      */
     public function usersList()
     {
-        return view('admin/usersList');
+        $users = User::all();
+        return view('admin/usersList', compact('users'));
     }
-    
+
     /**
      * Show the application dashboard.
      *
@@ -40,9 +49,10 @@ class AdminController extends Controller
      */
     public function paymentList()
     {
-        return view('admin/paymentList');
+        $payments = Payments::all();
+        return view('admin/paymentList', compact('payments'));
     }
-    
+
     /**
      * Show the application dashboard.
      *
@@ -50,7 +60,8 @@ class AdminController extends Controller
      */
     public function subscriptionList()
     {
-        return view('admin/subscriptionList');
+        $subPlans = SubscriptionPlans::all();
+        return view('admin/subscriptionList', compact('subPlans'));
     }
 
     /**
@@ -60,7 +71,8 @@ class AdminController extends Controller
      */
     public function categoryList()
     {
-        return view('admin/categoryList');
+        $categories = AdverticeCategories::all();
+        return view('admin/categoryList', compact('categories'));
     }
 
     /**
@@ -68,8 +80,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adverticsList()
+    public function adverticeList()
     {
-        return view('admin/adverticsList');
+        $adverticements = Adverticements::with('user', 'categories', 'usersubscriptions')->get();
+        return view('admin/adverticeList', compact('adverticements'));
     }
 }

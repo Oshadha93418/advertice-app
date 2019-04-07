@@ -103,4 +103,18 @@ class RegisterController extends Controller
             ->with(['success' => 'Congratulations! your account is now activated.']);
     }
 
+    public function fileUpload(Request $request) {
+
+    
+        if ($request->hasFile('input_img')) {
+            $image = $request->file('input_img');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            $image->move($destinationPath, $name);
+
+            $response = array('image'=>$name,'path'=>$destinationPath,'type'=>$image->getClientOriginalExtension());
+    
+            return $response;
+        }
+    }
 }

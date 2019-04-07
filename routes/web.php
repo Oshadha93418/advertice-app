@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/home', 'AdminController@index')->name('home');
 
-Route::get('/admin/adverticsList', 'AdminController@adverticsList')->name('adverticsList');
+Route::get('/admin/adverticeList', 'AdminController@adverticeList')->name('adverticeList');
 Route::get('/admin/categoryList', 'AdminController@categoryList')->name('categoryList');
 Route::get('/admin/subscriptionList', 'AdminController@subscriptionList')->name('subscriptionList');
 Route::get('/admin/paymentList', 'AdminController@paymentList')->name('paymentList');

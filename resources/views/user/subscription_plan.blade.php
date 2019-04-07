@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    @else
+                    @elseif($pro->title != 'Free')
                     <div class="col-md-3">
                         <div class="package ">
                             <div class="package-header">

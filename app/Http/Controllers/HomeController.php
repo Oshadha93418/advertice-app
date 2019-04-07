@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         $user_id = Auth::user()->id;
         $sub_plan = UserSubcription::where(['user_id' => $user_id])->get();
-        if (sizeof($sub_plan) == 0) {
+        if (sizeof($sub_plan) == 0 || $sub_plan->sub_id == 1) {
             $subs = SubscriptionPlans::all();
             return view('user/subscription_plan', compact('subs'))->with(['message' => 'Please select a subscription plan']);
         }
